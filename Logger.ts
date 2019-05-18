@@ -11,6 +11,8 @@ export namespace Logger {
       (cssColor ? styledP(x, cssColor) : simpleP(x));
   }
 
+  export const dumpJson = (x: any) => log("<pre>" + JSON.stringify(x, null, 2) + "</pre>");
+
   const simpleP = (x: any) => `<p> > ${x}</p>`
 
   const styledP = (x: any, hexColor?: string) => `<p style="color:${hexColor}"> > ${x}</p>`
