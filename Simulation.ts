@@ -8,16 +8,16 @@ export class Metrics {
 
   constructor(readonly values: Array<number> = []) {
     this.mean = values.reduce((memo, next) => memo + next, 0) / values.length;
+    this.min = values.reduce((memo, next) => (memo && memo <= next) ? memo : next, 0);
+    this.max = values.reduce((memo, next) => (memo > next) ? memo : next, 0);
+
   }
 
   addValue = (x: number) => new Metrics(this.values.concat(x));
 
-  private mean: number;
-  meanValue = () => {
-    return (this.mean)
-      ? this.mean
-      : this.mean = 5
-  }
+  mean: number;
+  min: number;
+  max: number;
 
 }
 
