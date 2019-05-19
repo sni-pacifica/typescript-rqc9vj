@@ -22,12 +22,27 @@ export class Simulation {
         clients,
         [
           Predicates.nameContains("ef"),
-          Predicates.isAdult
+          Predicates.isAdult,
+          Predicates.isMale
         ]
       )
     );
 
     executionTimes.set("filterOnePassTime", filterOnePassTime);
+    
+    const [filteredClientsMulti, filterMultiplePass] = execTime(() =>
+      Filtering.filterMultiplePass(
+        clients,
+        [
+          Predicates.nameContains("ef"),
+          Predicates.isAdult,
+          Predicates.isMale
+        ]
+      )
+    );
+
+    executionTimes.set("filterMultiplePass", filterMultiplePass);
+
     return executionTimes;
 
   }

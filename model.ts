@@ -82,4 +82,7 @@ export namespace Filtering {
   export const filterOnePass = <T>(ts: Array<T>, predicates: Array<(t: T) => boolean>) =>
     ts.filter(t => predicates.reduce((memo, p) => and(memo, p(t)), true))
 
+  export const filterMultiplePass = <T>(ts: Array<T>, predicates: Array<(t: T) => boolean>) =>
+    predicates.reduce((memo, f) => memo.filter(f), ts)
+
 }
