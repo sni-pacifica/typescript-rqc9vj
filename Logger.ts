@@ -11,6 +11,11 @@ export namespace Logger {
       (cssColor ? styledP(x, cssColor) : simpleP(x));
   }
 
+  export const logWithColor = (cssColor: string) =>
+    (x?: any) => {
+      log(x, cssColor);
+    }
+
   export const dumpJson = (x: any) => log("<pre>" + JSON.stringify(x, null, 2) + "</pre>");
 
   const simpleP = (x: any) => `<p> > ${x}</p>`
